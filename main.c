@@ -49,12 +49,37 @@ int str_to_integer(char* str) {
     return value;
 }
 
+// str[] skal indeholde asci værdier for talene
+// Basically retur værdi
+void int_to_string(int number, char* str, int len) {
+    int remain = number;
+    str += len;
+    do
+    {
+        int digit = remain % 10;
+        *str = digit + 48;
+        str--;
+        remain /= 10;
+    } while (remain > 0);
+
+    *str = '\0';
+}
+
 int main(int argc, char const *argv[])
 {
     char str[] = "-123433";
     int val = str_to_integer(str);
 
-    printf("%s svarer til %d", str, val);
+    printf("%s svarer til %d\n", str, val);
+
+
+
+    puts("========");
+
+    char res[255];
+
+    int_to_string(23345, res, 4);
+    printf("%s\n", res);
 
     return 0;
 }
